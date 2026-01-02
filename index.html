@@ -34,10 +34,26 @@
 </head>
 <body>
   <script>
-    // Auto-redirect to admin panel
-    if (!window.location.hash || !window.location.hash.startsWith('#/admin')) {
-      window.location.hash = '#/admin';
+    // Force redirect to admin panel on all page loads
+    function redirectToAdmin() {
+      if (!window.location.hash || !window.location.hash.startsWith('#/admin')) {
+        window.location.replace(window.location.pathname + '#/admin');
+      }
     }
+    // Run immediately
+    redirectToAdmin();
+    // Also run after DOM loads
+    document.addEventListener('DOMContentLoaded', redirectToAdmin);
+    // And after full page load
+    window.addEventListener('load', function() {
+      setTimeout(redirectToAdmin, 100);
+    });
+    // Monitor hash changes to prevent escape from admin
+    window.addEventListener('hashchange', function() {
+      if (!window.location.hash.startsWith('#/admin')) {
+        window.location.hash = '#/admin';
+      }
+    });
   </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
