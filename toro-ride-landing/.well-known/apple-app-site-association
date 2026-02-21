@@ -1,0 +1,22 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAM_ID.com.toro.rider",
+        "paths": [
+          "/invite/*",
+          "/get/*",
+          "/join/*",
+          "/download",
+          "/*"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "TEAM_ID.com.toro.rider"
+    ]
+  }
+}
